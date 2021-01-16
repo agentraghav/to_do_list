@@ -63,3 +63,21 @@
   margin-left: 35%;
   width: 350px;
 }
+
+.del {
+  margin-right: 20px;
+  height: 20px;
+  width: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 20px;
+  justify-content: center;
+  background: transparent;
+  color: #000;
+}
+
+.del:hover {
+  border-radius: 100%;
+  background-color: #6a2c70;
+  color: white;
+}

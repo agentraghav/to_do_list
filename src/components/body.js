@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Alert } from 'react-bootstrap';
 import '../styles/styles.css';
 export const Body = () => {
@@ -22,6 +22,17 @@ export const Body = () => {
     }
   };
 
+  const handleDel = (e) => {
+    console.log(e.target.id);
+    list.splice(e.target.id, 1);
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    setList(list);
+    window.localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
+
   return (
     <Container fluid className='back'>
       <Row className='box'>
@@ -44,8 +55,16 @@ export const Body = () => {
           </Col>
           <Col>
             {list.map((item, index) => (
-              <Alert variant='danger' className='li-item' key={index}>
-                <i class='fa fa-times del' aria-hidden='true'></i>'{item.todo}
+              <Alert
+                variant='danger'
+                className='li-item'
+                id={index}
+                key={index}>
+                <i
+                  className='fa fa-times del'
+                  onClick={handleDel}
+                  aria-hidden='true'></i>
+                {item.todo}
               </Alert>
             ))}
           </Col>

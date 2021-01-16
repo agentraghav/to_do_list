@@ -11,7 +11,8 @@ export const Body = () => {
   };
 
   const handleAdd = (e) => {
-    if (curr_value !== '') {
+    let inp = document.getElementById('list').value;
+    if (inp.length > 0) {
       const obj = { id: '', todo: curr_value };
       list = list.map((todo, index) => {
         return { ...todo, id: index };
@@ -25,6 +26,11 @@ export const Body = () => {
   const handleDel = (e) => {
     list.splice(Number(e.target.id), 1);
     window.localStorage.setItem('list', JSON.stringify(list));
+    window.location.reload();
+  };
+
+  const handleClear = (e) => {
+    setList([]);
     window.location.reload();
   };
 
@@ -51,11 +57,15 @@ export const Body = () => {
             <i
               className='fa fa-plus add'
               onClick={handleAdd}
+              aria-hidden='true'></i>{' '}
+            <i
+              className='fa fa-trash clear'
+              onClick={handleClear}
               aria-hidden='true'></i>
           </Col>
           <Col>
             {list.map((item, index) => (
-              <Alert variant='danger' className='li-item'>
+              <Alert key={index} variant='danger' className='li-item'>
                 <i
                   key={index}
                   id={index}

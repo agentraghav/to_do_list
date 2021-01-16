@@ -23,8 +23,8 @@ export const Body = () => {
   };
 
   const handleDel = (e) => {
-    console.log(e.target.id);
-    list.splice(e.target.id, 1);
+    list.splice(Number(e.target.id), 1);
+    window.localStorage.setItem('list', JSON.stringify(list));
     window.location.reload();
   };
 
@@ -38,7 +38,7 @@ export const Body = () => {
       <Row className='box'>
         <Col>
           <h2 className='head'>
-            To Do List <i class='fas fa-pencil-alt'></i>
+            To Do List <i className='fas fa-pencil-alt'></i>
           </h2>
           <Col className='inp'>
             <input
@@ -55,12 +55,10 @@ export const Body = () => {
           </Col>
           <Col>
             {list.map((item, index) => (
-              <Alert
-                variant='danger'
-                className='li-item'
-                id={index}
-                key={index}>
+              <Alert variant='danger' className='li-item'>
                 <i
+                  key={index}
+                  id={index}
                   className='fa fa-times del'
                   onClick={handleDel}
                   aria-hidden='true'></i>

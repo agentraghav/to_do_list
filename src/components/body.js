@@ -5,6 +5,9 @@ export const Body = () => {
   let [list, setList] = useState(
     JSON.parse(window.localStorage.getItem('list')) || []
   );
+  let [compList, setCompList] = useState(
+    JSON.parse(window.localStorage.getItem('comp_list')) || []
+  );
   let curr_value;
   const handleInput = (e) => {
     curr_value = e.target.value;
@@ -24,6 +27,12 @@ export const Body = () => {
   };
 
   const handleDel = (e) => {
+    let obj = { id: '', comp: list[Number(e.target.id)].todo };
+    compList = compList.map((complete, index) => {
+      return { ...complete, id: index };
+    });
+    compList.push({ ...obj, id: compList.length });
+    window.localStorage.setItem('comp_list', JSON.stringify(compList));
     list.splice(Number(e.target.id), 1);
     window.localStorage.setItem('list', JSON.stringify(list));
     window.location.reload();
@@ -31,13 +40,16 @@ export const Body = () => {
 
   const handleClear = (e) => {
     setList([]);
+    setCompList([]);
     window.location.reload();
   };
 
   useEffect(() => {
     setList(list);
     window.localStorage.setItem('list', JSON.stringify(list));
-  }, [list]);
+    setCompList(compList);
+    window.localStorage.setItem('comp_list', JSON.stringify(compList));
+  }, [list, compList]);
 
   return (
     <Container fluid className='back'>
@@ -73,6 +85,16 @@ export const Body = () => {
                   onClick={handleDel}
                   aria-hidden='true'></i>
                 {item.todo}
+              </Alert>
+            ))}
+          </Col>
+          <Col>
+            <h3 className='comp'>Completed Tasks</h3>
+          </Col>
+          <Col>
+            {compList.map((item, index) => (
+              <Alert key={index} variant='success' className='li-item'>
+                <p className='complete'>{item.comp}</p>
               </Alert>
             ))}
           </Col>

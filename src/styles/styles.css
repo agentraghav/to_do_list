@@ -1,5 +1,5 @@
 .back {
-  min-height: 600px;
+  min-height: 750px;
   display: flex;
   background-color: #f9ed69;
   font-family: 'Rock Salt', 'Indie Flower', 'Shadows Into Light';
@@ -98,4 +98,19 @@
 .clear:hover {
   background-color: white;
   color: #6a2c70;
+}
+
+.comp {
+  letter-spacing: 2px;
+  color: #b83b5e;
+  font-weight: 600;
+  font-size: 40px;
+  margin-top: 100px;
+  margin-left: 35%;
+}
+
+.complete {
+  letter-spacing: 1px;
+  font-size: 18px;
+  text-decoration: line-through 2px;
 }

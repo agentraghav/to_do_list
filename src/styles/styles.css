@@ -1,5 +1,5 @@
 .back {
-  height: 100vh;
+  height: 100%;
   display: flex;
   background-color: #f9ed69;
   font-family: 'Rock Salt', 'Indie Flower', 'Shadows Into Light';
@@ -20,7 +20,46 @@
   margin-left: 35%;
 }
 
+#list {
+  padding: 10px;
+  margin-left: 30%;
+  width: 24em;
+  font-family: 'Rock Salt', 'Indie Flower', 'Shadows Into Light', cursive;
+  font-size: 1.4em;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
 .fas,
 .far {
   color: #6a2c70 !important;
+}
+
+.inp {
+  margin-top: 50px;
+}
+
+.add {
+  background-color: #6a2c70;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: 45px;
+  padding-top: 15px;
+  margin-left: 20px;
+  padding: 10px;
+  padding-left: 15px;
+}
+
+.add:hover {
+  background-color: white;
+  color: #6a2c70;
+}
+
+.li-item {
+  height: 37px;
+  margin-top: 10px;
+  margin-left: 35%;
+  width: 350px;
 }
